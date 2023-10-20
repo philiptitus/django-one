@@ -15,14 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include,re_path
+from django.urls import path, include
 from todoapp import views
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name = 'index'),
-    path('/todoapp',include('todoapp.urls')),
-    re_path('logout/', views.u_logout,name='logout')
-    
+    path('', views.index, name='index'),
+    path('todoapp/', include('todoapp.urls')),  # Remove the leading slash
+    path('logout/', views.u_logout, name='logout')
 ]
+
